@@ -21,13 +21,25 @@ main{
     background: linear-gradient(190deg, var(--primary-clr), var(--light-blue));
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+h2{
+    margin: 2rem auto;
+    color: #fff;
+}
+
+h2 span {
+    color: var(--light-yellow);
 }
 
 .calculator{
-    width: 90%;
+    width: 350px;
+    max-width: 90%;
     border-radius: .5rem;
     overflow: hidden;
+    margin: 3rem auto;
 }
 
 .calculator .display{
@@ -130,6 +142,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     border-radius: 5px;
 }
 
+.input-btn > svg {
+    pointer-events: none;
+}
+
 .input-btn span{
     position: absolute;
     background: #fff;
@@ -150,4 +166,83 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         height: 300px;
         opacity: 0;
     }
+}
+
+.overlay{
+    position: absolute;
+    inset: 0;
+    background-color: rgba( 0, 0, 0, 0.5 );
+   opacity: 0;
+   pointer-events: none;
+}
+
+.active{
+    opacity: 1 !important;
+    pointer-events: all !important;
+}
+
+.pop-up{
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+#about{
+    background-color: #fafafa;
+    width: 800px;
+    max-width: 90%;
+    padding: 2rem 3rem;
+    border-radius: 5px;
+}
+
+#about h2{
+    margin: 1rem;
+}
+
+#about nav{
+    margin-left: 3rem;
+}
+
+#about nav a{
+    display: flex;
+    align-items: flex-end;
+    margin: 0.5rem 0;
+}
+
+#about nav svg{
+    margin-right: 0.5rem;
+}
+
+#github-project-link{margin-top: 1rem;}
+
+#about h2, #about span, #about svg{
+    color: var(--secondary-color);
+}
+
+main > .open-about{
+    color: var(--light-yellow);
+}
+
+.open-about, .close-about{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--primary-clr);
+    cursor: pointer;
+}  
+
+a{
+    text-decoration: none;
+    color: initial;
+    opacity: 0.8;
+    transition: opacity .5s ease-in-out;
+}
+
+a:hover{
+    opacity: 1;
 }
