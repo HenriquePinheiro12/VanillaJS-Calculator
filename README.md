@@ -1,11 +1,11 @@
-# Vanilla JS Calculator 
+# Vanilla JS Calculator ♦️
 
 ## About the project 🖩
 
 In progress...
 
 
-## Author
+## Author 🧑‍💻
 
 - Frontend Mentor - [@HenriquePinheiro12](https://www.frontendmentor.io/profile/HenriquePinheiro12)
 - Github - [@HenriquePinheiroo12](https://github.com/henriquepinheiro12/)
