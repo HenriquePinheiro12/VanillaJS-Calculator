@@ -31,7 +31,7 @@ const updateDisplay = (digitValue) => {
     $displayContainer.innerHTML = displayStr.join('')
 }
 const calculate = () => {
-    console.log(expressionStr)
+    
 }
 
 $digitInput.forEach(val => {
