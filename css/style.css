@@ -40,6 +40,16 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     height: 120px;
     margin-bottom: .5rem;
     border-radius: .5rem;
+    color: #fff;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+.calculator .display span{
+    color: var(--light-yellow);
+    margin: 0 5px;
 }
 
 .calculator .pad-grid-container{
@@ -136,8 +146,8 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         opacity: 1;
     }
     to{
-        width: 500px;
-        height: 500px;
+        width: 300px;
+        height: 300px;
         opacity: 0;
     }
 }
