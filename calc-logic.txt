@@ -1,3 +1,6 @@
+
+
+
 1 - split soma
 2 - split sub
 3 - split mult
