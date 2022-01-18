@@ -5,7 +5,7 @@
 This is a simple calculator created with __Vanilla JavaScript__ after two mounths of learning of the leanguage. It was a real challange to find the best aproach to build its algorithm´s logic, but with some knowlodge of the JS tools I could develop it
 
  - Suports all basic operations: sum, subtraction, multiplication, division.
- - [Based on app-ideas repository´s calculator project](https://github.com/app-ideas/app-ideas/blob/master/Projects/Calculator-App.md)
+ - [Based on app-ideas repository´s calculator project](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Calculator-App.md)
  - [Live Site Here!](https://henriquepinheiro12.github.io/VanillaJS-Calculator/)
 
 ## Screenshots 📷
