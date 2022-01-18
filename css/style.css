@@ -7,6 +7,17 @@
     font-family: var(--ff);
 }
 
+a{
+    text-decoration: none;
+    color: initial;
+    opacity: 0.8;
+    transition: opacity .5s ease-in-out;
+}
+
+a:hover{
+    opacity: 1;
+}
+
 :root{
     --primary-clr: #6F37FA;
     --secondary-color:#FA7B0A;
@@ -14,6 +25,7 @@
     --light-yellow:#FFEC30;
 
     --ff:'Poppins', sans-serif;
+    --fs:1.5rem;
 }
 
 main{
@@ -30,7 +42,7 @@ h2{
     color: #fff;
 }
 
-h2 span {
+h2 span, span.operator {
     color: var(--light-yellow);
 }
 
@@ -40,15 +52,18 @@ h2 span {
     border-radius: .5rem;
     overflow: hidden;
     margin: 3rem auto;
+    font-size: var(--fs);
 }
 
-.calculator .display{
+.display{
+    /*Glassmorphism*/
     background: rgba( 255, 255, 255, 0.2 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 6.5px );
--webkit-backdrop-filter: blur( 6.5px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 6.5px );
+    -webkit-backdrop-filter: blur( 6.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
     height: 120px;
     margin-bottom: .5rem;
     border-radius: .5rem;
@@ -57,85 +72,26 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     justify-content: flex-end;
     align-items: flex-end;
     padding: 1rem;
-    font-size: 1.5rem;
+
 }
-.calculator .display span.operator{
-    color: var(--light-yellow);
+span.operator{
     margin: 0 5px;
 }
 
-.calculator .pad-grid-container{
+.pad-grid-container{
     padding: .5rem;
-    /* background-color: var(--secondary-color); */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: .5rem;
-    grid-auto-rows: 45px;
-    
+    grid-auto-rows: 45px;    
 }
 
-.calculator .pad-grid-container > div, .grid-numbers-block > div{
+.input-btn{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
-}
-
-
-.calculator .pad-grid-container > div{
-    /* color: var(--light-yellow); */
     color: #fff;
-}
-
-.grid-numbers-block > div{
-    color: #fff;
-}
-
-.calculator .pad-grid-container .equals{
-    font-size: 1.5rem;
-}
-
-.minus{
-    grid-column: span 2;
-}
-
-.plus,  .equals{
-    grid-row: span 2;
-    grid-column-end: -1;
-}
-
-.equals{
-    background: linear-gradient(390deg, var(--secondary-color), var(--light-yellow));
-    border-radius: .5rem;
-    color: #fff !important;
-}
-
-
-
-.calculator .pad-grid-container .grid-numbers-block{
-    grid-column: 1 / span 3;
-    grid-row: 2 / span 4;
-    display: grid;
-    grid-template-areas: 
-        "sev eig nine"
-        "four five six"
-        "one two thr"
-        "ca zer c";
-    grid-auto-rows: 45px;
-    grid-auto-columns: 1fr;
-    gap: .5rem;
-    border: 1px solid rgba( 255, 255, 255, 0.5 );
-    border-radius: .5rem;
-}
-
-.grid-numbers-block .nine{grid-area: nine;}.grid-numbers-block .eight{grid-area: eig;}.grid-numbers-block .seven{grid-area: sev;}
-.grid-numbers-block .six {grid-area: six;}.grid-numbers-block .five{grid-area: five;}.grid-numbers-block .four{grid-area: four;}
-.grid-numbers-block .three{grid-area: thr;}.grid-numbers-block .two {grid-area: two;}.grid-numbers-block .one {grid-area: one;}
-.grid-numbers-block .zero{grid-area: zer;}.grid-numbers-block .clear-all{grid-area: ca;color: var(--light-yellow);}
-.grid-numbers-block .clear{grid-area: c;color: var(--light-yellow);}
-
-
-.input-btn{
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -146,6 +102,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     pointer-events: none;
 }
 
+/*Click animation*/
 .input-btn span{
     position: absolute;
     background: #fff;
@@ -168,17 +125,53 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     }
 }
 
+/*Grid*/
+.minus{
+    grid-column: span 2;
+}
+
+.plus,  .equals{
+    grid-row: span 2;
+    grid-column-end: -1;
+}
+
+.equals{
+    background: linear-gradient(390deg, var(--secondary-color), var(--light-yellow));
+}
+
+.grid-numbers-block{
+    grid-column: 1 / span 3;
+    grid-row: 2 / span 4;
+    display: grid;
+    grid-template-areas: 
+        "sev eig nine"
+        "four five six"
+        "one two thr"
+        "ca zer c";
+    grid-auto-rows: 45px;
+    grid-auto-columns: 1fr;
+    gap: .5rem;
+    border: 1px solid rgba( 255, 255, 255, 0.5 );
+    border-radius: .5rem;
+}
+
+.grid-numbers-block .nine{grid-area: nine;}.grid-numbers-block .eight{grid-area: eig;}.grid-numbers-block .seven{grid-area: sev;}
+.grid-numbers-block .six {grid-area: six;}.grid-numbers-block .five{grid-area: five;}.grid-numbers-block .four{grid-area: four;}
+.grid-numbers-block .three{grid-area: thr;}.grid-numbers-block .two {grid-area: two;}.grid-numbers-block .one {grid-area: one;}
+.grid-numbers-block .zero{grid-area: zer;}.grid-numbers-block .clear-all{grid-area: ca;color: var(--light-yellow);}
+.grid-numbers-block .clear{grid-area: c;color: var(--light-yellow);}
+
+
+/*PopUps*/
+.overlay, .pop-up{
+    opacity: 0;
+    pointer-events: none;
+}
+
 .overlay{
     position: absolute;
     inset: 0;
     background-color: rgba( 0, 0, 0, 0.5 );
-   opacity: 0;
-   pointer-events: none;
-}
-
-.active{
-    opacity: 1 !important;
-    pointer-events: all !important;
 }
 
 .pop-up{
@@ -186,11 +179,24 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
-    pointer-events: none;
     transition: opacity 0.5s ease-in-out;
 }
 
+.active{
+    opacity: 1 !important;
+    pointer-events: all !important;
+}
+
+.open-about{
+    color: var(--light-yellow);
+}
+
+.open-about, .close-about{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
 
 #about{
     background-color: #fafafa;
@@ -198,6 +204,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     max-width: 90%;
     padding: 2rem 3rem;
     border-radius: 5px;
+}
+
+.sec-clr{   
+    color: var(--secondary-color);
 }
 
 #about h2{
@@ -208,7 +218,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     margin-left: 3rem;
 }
 
-#about nav a{
+#about nav a{ /*github, linkedin links*/
     display: flex;
     align-items: flex-end;
     margin: 0.5rem 0;
@@ -219,30 +229,3 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 #github-project-link{margin-top: 1rem;}
-
-#about h2, #about span, #about svg{
-    color: var(--secondary-color);
-}
-
-main > .open-about{
-    color: var(--light-yellow);
-}
-
-.open-about, .close-about{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: var(--primary-clr);
-    cursor: pointer;
-}  
-
-a{
-    text-decoration: none;
-    color: initial;
-    opacity: 0.8;
-    transition: opacity .5s ease-in-out;
-}
-
-a:hover{
-    opacity: 1;
-}
