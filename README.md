@@ -1,4 +1,4 @@
-# Vanilla JS Calculator 🖩
+# Vanilla JS Calculator 🧮
 
 ## About the project 🎯
 
