@@ -30,10 +30,35 @@ const updateDisplay = (digitValue) => {
     expressionStr = expressionStr.concat(digitValue)
     $displayContainer.innerHTML = displayStr.join('')
 }
-const calculate = exp => some(exp)
+const calculate = () => {
+    if (expressionStr.length < 1) return
+    const result = some(expressionStr)
+    displayStr.splice(0, displayStr.length, `<span>${result}</span>`)
+    expressionStr = String(result)
+    $displayContainer.innerHTML = displayStr.join('')
+}
 
 const some = exp => {
-    
+    const parcels = exp.split('+')
+    const simplifiedParcels = parcels.map(val => subtract(val))
+    return simplifiedParcels.reduce((acc, val) => acc + Number(val), 0) //final result
+}
+
+const subtract = exp => {
+    const parcels = exp.split('-')
+    const simplifiedParcels = parcels.map(val => multiply(val))
+    return simplifiedParcels.reduce((acc, val) => acc - val)
+}
+
+const multiply = exp => {
+    const factors = exp.split('x')
+    const simplifiedFactors = factors.map(val => divide(val))
+    return simplifiedFactors.reduce((acc, val) => acc * val)
+}
+
+const divide = exp => {
+    const factors = exp.split('/')
+    return factors.reduce((acc, val) => acc / val)
 }
 
 $digitInput.forEach(val => {
