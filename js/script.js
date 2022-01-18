@@ -30,7 +30,9 @@ const updateDisplay = (digitValue) => {
     expressionStr = expressionStr.concat(digitValue)
     $displayContainer.innerHTML = displayStr.join('')
 }
-const calculate = () => {
+const calculate = exp => some(exp)
+
+const some = exp => {
     
 }
 
