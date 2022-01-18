@@ -7,17 +7,8 @@ const displayStr = []; //renders client size
 let expressionStr = ''; //processment
 const operators = ['+', '-', '/', 'x']
 
-const clearAllDisplay = () => {
-    displayStr.splice(0, displayStr.length)
-    expressionStr = ''
-    $displayContainer.innerHTML = displayStr.join('')
-}
-const clearDisplay = () =>{
-    displayStr.pop()
-    expressionStr = expressionStr.substr(0, expressionStr.length -1)
-    $displayContainer.innerHTML = displayStr.join('')
-}
 const isOperator = value => operators.includes(value)
+
 const updateDisplay = (digitValue) => {
     if(isOperator(digitValue)){
         if(isOperator(expressionStr[expressionStr.length -1]) || displayStr.length === 0)
@@ -30,18 +21,38 @@ const updateDisplay = (digitValue) => {
     expressionStr = expressionStr.concat(digitValue)
     $displayContainer.innerHTML = displayStr.join('')
 }
+
+const clearAllDisplay = () => {
+    displayStr.splice(0, displayStr.length)
+    expressionStr = ''
+    $displayContainer.innerHTML = displayStr.join('')
+}
+
+const clearDisplay = () =>{
+    displayStr.pop()
+    expressionStr = expressionStr.substr(0, expressionStr.length -1)
+    $displayContainer.innerHTML = displayStr.join('')
+}
+
 const calculate = () => {
     if (expressionStr.length < 1) return
     const result = some(expressionStr)
-    displayStr.splice(0, displayStr.length, `<span>${result}</span>`)
-    expressionStr = String(result)
+    const displayResult =  result.split('').map(val => {
+        return isOperator(val) ? 
+            `<span class="operator">${val}</span>` :
+            `<span>${val}</span>`
+    })
+    displayStr.splice(0, displayStr.length)
+    displayResult.forEach(val => displayStr.push(val))
+    expressionStr = result
     $displayContainer.innerHTML = displayStr.join('')
 }
 
 const some = exp => {
     const parcels = exp.split('+')
     const simplifiedParcels = parcels.map(val => subtract(val))
-    return simplifiedParcels.reduce((acc, val) => acc + Number(val), 0) //final result
+    const result =  simplifiedParcels.reduce((acc, val) => acc + Number(val), 0) //final result
+    return String(result) 
 }
 
 const subtract = exp => {
@@ -61,12 +72,12 @@ const divide = exp => {
     return factors.reduce((acc, val) => acc / val)
 }
 
+$clearBtn.addEventListener('click', clearDisplay)
+$clearAllBtn.addEventListener('click', clearAllDisplay)
+$equalsBtn.addEventListener('click', calculate)
 $digitInput.forEach(val => {
     val.addEventListener('click', function(e){
         const digitValue = this.dataset.value
         updateDisplay(digitValue)
     })
 })
-$clearBtn.addEventListener('click', clearDisplay)
-$clearAllBtn.addEventListener('click', clearAllDisplay)
-$equalsBtn.addEventListener('click', calculate)
